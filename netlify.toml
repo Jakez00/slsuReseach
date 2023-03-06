@@ -1,4 +1,0 @@
-[[redirects]]
-form = "/*" 
-to = "front.php"
-status = 301
