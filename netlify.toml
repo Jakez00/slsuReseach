@@ -1,4 +1,4 @@
 [[redirects]]
 form = "/*" 
 to = "front.php"
-status = 200
+status = 301
