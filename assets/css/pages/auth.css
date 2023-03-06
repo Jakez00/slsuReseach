@@ -1,0 +1,5 @@
+body{background-color:black}
+#auth{height:100vh;overflow-x:hidden}
+#auth #auth-left{padding:5rem 4rem;}
+#auth #auth-left .auth-title{font-size:4rem;margin-bottom:3rem}
+#auth #auth-left .auth-subtitle{color:#a8aebb;font-size:1.7rem;line-height:2.5rem}
