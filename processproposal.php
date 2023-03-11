@@ -128,32 +128,22 @@
             
 
             if (empty($user)){
+
                 $query = "INSERT INTO newproposal (title, description,tags,filename,DateCreated,TimeCreated,proposalstatus,employeeid,employeeid2,employeeid3,ca,ra,pb,pd,department) 
                             VALUES('$title', '$ia','$tags', '$location','$DateCreated','$TimeCreated','$proposalstatus','$employeeid1','$employeeid2','$employeeid3','$ca','$ra','$pb','$pd','$department')";
                 $res = mysqli_query($db, $query);
-                if ($res){
-                    $query = "INSERT INTO logs (description,dateprocess,timeprocess,userid,proposalid,title) 
-                                VALUES('Proposal sucessfully created','$DateCreated','$TimeCreated',$employeeid1, ".mysqli_insert_id($db).",'$title')";
-                $res = mysqli_query($db, $query);
-                
-                if ($res){
-                   
-                    $coor_result = mysqli_query($db, "SELECT e.id from employee as e LEFT JOIN users as u on e.id = u.accountholder  where u.accounttype = 3 AND e.department = '$department'");
-                    $row = mysqli_fetch_array($coor_result);
-                    $proponentid = $row['id'];
-                    mysqli_query($db,"INSERT INTO notifications (fromid, toid, updates,title) values ('$userid','$proponentid','New proposal has been submitted!','$title')"); 
-                    
-                    echo "1";
 
-                }else{
-                    echo "forwarding fail";
-                } 
                 
-                }
-        
-                else{
-                    echo "Error saving proposal!";
-                }
+                $query = "INSERT INTO logs (description,dateprocess,timeprocess,userid,proposalid,title) 
+                            VALUES('Proposal sucessfully created','$DateCreated','$TimeCreated',$employeeid1, ".mysqli_insert_id($db).",'$title')";
+            
+                $coor_result = mysqli_query($db, "SELECT e.id from employee as e LEFT JOIN users as u on e.id = u.accountholder  where u.accounttype = 3 AND e.department = '$department'");
+                $row = mysqli_fetch_array($coor_result);
+                $proponentid = $row['id'];
+                mysqli_query($db,"INSERT INTO notifications (fromid, toid, updates,title) values ('$userid','$proponentid','New proposal has been submitted!','$title')"); 
+                
+                echo "1";
+
             }
             else{
                 echo "Title already exist!";

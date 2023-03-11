@@ -17,7 +17,6 @@
             <span>Dashboard</span>
         </a>
     </li>
-    
     <li
         class="sidebar-item ">
         <a href="#" id = "newproposal" class='sidebar-link'>
